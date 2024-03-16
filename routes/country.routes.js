@@ -2,12 +2,13 @@ const express = require("express");
 const router = express.Router();
 
 const { verifyToken } = require("../middleware/middleware");
+
 const {
   getCountries,
   getCountryInfo,
 } = require("../controllers/country.controller");
 
-
+//  Route to get information about a specific country by name.
 router.get("/countries/:countryName", verifyToken, async (req, res) => {
   try {
     const countryName = req.params.countryName;
@@ -18,7 +19,7 @@ router.get("/countries/:countryName", verifyToken, async (req, res) => {
   }
 });
 
-
+// Route to get a list of countries based on filter, sort, pagination criteria.
 router.get("/countries", verifyToken, async (req, res) => {
   try {
     const { filter, sort, page, limit } = req.body;

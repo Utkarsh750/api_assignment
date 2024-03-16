@@ -18,6 +18,7 @@ async function getCountries(filter, sort, page, limit) {
 
     let countries = response.data;
 
+    // Apply filters
     if (filter) {
       if (filter.population) {
         const { min: minPopulation, max: maxPopulation } = filter.population;
@@ -43,6 +44,7 @@ async function getCountries(filter, sort, page, limit) {
         });
       }
     }
+
     // sorting logic
     if (sort) {
       const { field, order } = sort;
